@@ -8,6 +8,21 @@
 </head>
 <body>
 
+    <!-- Modal Kegiatan -->
+    <div class="modal-overlay" id="kegiatanModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="Tutup modal">&times;</button>
+            <div class="modal-img-wrap">
+                <img src="" alt="" class="modal-img" id="modalImg" />
+            </div>
+            <div class="modal-body">
+                <span class="modal-prodi-tag" id="modalProdiTag"></span>
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <p class="modal-desc" id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="navbar-brand">
             <span class="brand-icon">♠</span>
@@ -163,6 +178,35 @@
             </div>
         `).join('');
 
+        // ── Modal ──
+        const modal        = document.getElementById('kegiatanModal');
+        const modalImg     = document.getElementById('modalImg');
+        const modalTitle   = document.getElementById('modalTitle');
+        const modalDesc    = document.getElementById('modalDesc');
+        const modalProdiTag = document.getElementById('modalProdiTag');
+        const modalClose   = document.getElementById('modalClose');
+
+        function openModal(item, namaProdi) {
+            modalImg.src        = BASE_IMG + item.image;
+            modalImg.alt        = item.title;
+            modalTitle.textContent  = item.title;
+            modalDesc.textContent   = item.short_description;
+            modalProdiTag.textContent = namaProdi;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            // reset src setelah animasi selesai
+            setTimeout(() => { modalImg.src = ''; }, 300);
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
         // Fetch semua API paralel
         async function fetchKegiatan() {
             const fetches = data.map((prodi, i) =>
@@ -181,7 +225,7 @@
                     return;
                 }
                 grid.innerHTML = kegiatan.map(item => `
-                    <div class="kegiatanCard">
+                    <div class="kegiatanCard" role="button" tabindex="0" aria-label="Lihat detail: ${item.title}">
                         <div class="kegiatanCard-img-wrap">
                             <img
                                 src="${BASE_IMG}${item.image}"
@@ -190,6 +234,9 @@
                                 loading="lazy"
                                 onerror="this.closest('.kegiatanCard-img-wrap').classList.add('img-error')"
                             />
+                            <div class="kegiatanCard-overlay">
+                                <span class="kegiatanCard-overlay-icon">&#128269;</span>
+                            </div>
                         </div>
                         <div class="kegiatanCard-body">
                             <h4 class="kegiatanCard-title">${item.title}</h4>
@@ -197,6 +244,14 @@
                         </div>
                     </div>
                 `).join('');
+
+                // Pasang event listener ke tiap card
+                grid.querySelectorAll('.kegiatanCard').forEach((card, idx) => {
+                    const item = kegiatan[idx];
+                    const handler = () => openModal(item, prodi.namaProdi);
+                    card.addEventListener('click', handler);
+                    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') handler(); });
+                });
             });
         }
 
@@ -310,6 +365,7 @@
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .kegiatanCard:hover {
@@ -323,6 +379,32 @@
             overflow: hidden;
             background: #e8f4fb;
             position: relative;
+        }
+
+        .kegiatanCard-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 32, 39, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .kegiatanCard:hover .kegiatanCard-overlay {
+            opacity: 1;
+        }
+
+        .kegiatanCard-overlay-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+            transform: scale(0.8);
+            transition: transform 0.25s ease;
+        }
+
+        .kegiatanCard:hover .kegiatanCard-overlay-icon {
+            transform: scale(1);
         }
 
         .kegiatanCard-img-wrap.img-error::after {
@@ -866,6 +948,132 @@
                 width: 100%;
                 padding: 0.75rem 2rem;
                 border-radius: 0;
+            }
+        }
+        /* ── Modal ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(10, 20, 30, 0.75);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(24px) scale(0.97);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 0.85rem;
+            right: 0.85rem;
+            z-index: 10;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 1.2rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        .modal-img-wrap {
+            width: 100%;
+            background: #0d1b24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 60vh;
+            overflow: hidden;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            max-height: 60vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .modal-body {
+            padding: 1.75rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .modal-prodi-tag {
+            display: inline-block;
+            background: rgba(46, 161, 214, 0.1);
+            color: #2ea1d6;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            width: fit-content;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1a1a2e;
+            line-height: 1.4;
+        }
+
+        .modal-desc {
+            font-size: 0.92rem;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        @media (max-width: 480px) {
+            .modal-body {
+                padding: 1.25rem 1.25rem 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.05rem;
             }
         }
     </style>

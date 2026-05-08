@@ -23,7 +23,7 @@ index.html   → semua HTML, CSS, dan JS dalam satu file
 
 Data kegiatan diambil dari:
 ```
-https://new.upitra.ac.id/api/prodi/{slug}
+https://new.upitra.ac.id/api/prodi/
 ```
 
 Developed by : Rafael Dustine "Jauh lebih dikenal sebagai Ujang"

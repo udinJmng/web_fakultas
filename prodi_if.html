@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1 Informatika — FST UPITRA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            height: 64px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #f0f0f0;
+            transition: box-shadow 0.2s;
+        }
+
+        .navbar.scrolled { box-shadow: 0 1px 16px rgba(0,0,0,0.07); }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .brand-icon { width: 34px; height: 34px; object-fit: contain; display: block; }
+
+        .brand-name {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -0.01em;
+        }
+
+        .navbar-back {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #555;
+            text-decoration: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .navbar-back:hover { background: #f4f4f5; color: #111; }
+
+        .hero {
+            background: #0f1f2e;
+            color: #fff;
+            padding: 4rem 2.5rem 3.5rem;
+        }
+
+        .hero-inner { max-width: 760px; }
+
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #7eb8e8;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(1.8rem, 4vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-desc {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.75;
+            max-width: 580px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .hero-meta-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .hero-meta-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section:last-child { border-bottom: none; }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.25rem;
+            border-bottom: 1px solid #ebebeb;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tabs::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            padding: 0.6rem 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #888;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color 0.15s, border-color 0.15s;
+            margin-bottom: -1px;
+        }
+
+        .tab-btn:hover { color: #333; }
+
+        .tab-btn.active {
+            color: #111;
+            font-weight: 600;
+            border-bottom-color: #111;
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .course-table th {
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #999;
+            padding: 0 1rem 0.75rem;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .course-table th:last-child { text-align: center; }
+
+        .course-table td {
+            padding: 0.85rem 1rem;
+            font-size: 0.9rem;
+            color: #333;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .course-table tr:last-child td { border-bottom: none; }
+
+        .course-table td:first-child { color: #bbb; font-size: 0.8rem; }
+
+        .course-table td:last-child {
+            text-align: center;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .sks-badge {
+            display: inline-block;
+            background: #f4f4f5;
+            color: #555;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        .total-sks {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ebebeb;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .total-sks strong { color: #111; font-size: 0.95rem; }
+
+        .dosen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .dosen-card {
+            border: 1px solid #ebebeb;
+            border-radius: 14px;
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+            background: #fff;
+        }
+
+        .dosen-card:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        .dosen-photo-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            background: #f0f0f0;
+        }
+
+        .dosen-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dosen-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.3rem;
+        }
+
+        .dosen-jabatan {
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 0.85rem;
+        }
+
+        .dosen-expertise-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            justify-content: center;
+        }
+
+        .expertise-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #555;
+            background: #f4f4f5;
+            padding: 0.18rem 0.55rem;
+            border-radius: 5px;
+        }
+
+        .dosen-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .dosen-modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .dosen-modal {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 560px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            transform: translateY(14px);
+            opacity: 0;
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+
+        .dosen-modal-overlay.active .dosen-modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .dosen-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            border: none;
+            background: #f4f4f5;
+            color: #555;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+            z-index: 10;
+        }
+
+        .dosen-modal-close:hover { background: #e8e8e8; }
+
+        .dosen-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 2rem 2rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dosen-modal-photo-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #f0f0f0;
+        }
+
+        .dosen-modal-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dosen-modal-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.25rem;
+        }
+
+        .dosen-modal-jabatan {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.3rem;
+        }
+
+        .dosen-modal-email {
+            font-size: 0.8rem;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .dosen-modal-email:hover { text-decoration: underline; }
+
+        .dosen-modal-body {
+            padding: 1.5rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .dosen-modal-section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: #bbb;
+            margin-bottom: 0.6rem;
+        }
+
+        .dosen-modal-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .dosen-modal-edu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .edu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .edu-degree-row {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .edu-detail {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .dosen-modal-pubs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pub-item {
+            font-size: 0.82rem;
+            color: #555;
+            line-height: 1.55;
+            padding-left: 0.9rem;
+            position: relative;
+        }
+
+        .pub-item::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: #bbb;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .dosen-modal-footer {
+            padding: 0 2rem 1.75rem;
+        }
+
+        .dosen-sinta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #2563eb;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1.5px solid #dbeafe;
+            border-radius: 8px;
+            background: #eff6ff;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .dosen-sinta-link:hover {
+            background: #dbeafe;
+            border-color: #bfdbfe;
+        }
+
+        @media (max-width: 640px) {
+            .navbar { padding: 0 1.25rem; }
+            .hero { padding: 3rem 1.5rem 2.5rem; }
+            .container { padding: 0 1.5rem; }
+            .dosen-grid { grid-template-columns: 1fr; }
+            .hero-meta { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dosen-modal-overlay" id="dosenModal">
+        <div class="dosen-modal" id="dosenModalBox">
+            <button class="dosen-modal-close" id="dosenModalClose">&times;</button>
+            <div class="dosen-modal-header">
+                <div class="dosen-modal-photo-wrap">
+                    <img src="" alt="" class="dosen-modal-photo" id="modalPhoto" />
+                </div>
+                <div>
+                    <div class="dosen-modal-name" id="modalName"></div>
+                    <div class="dosen-modal-jabatan" id="modalJabatan"></div>
+                    <a href="" class="dosen-modal-email" id="modalEmail"></a>
+                </div>
+            </div>
+            <div class="dosen-modal-body">
+                <div id="modalExpertiseSection">
+                    <div class="dosen-modal-section-title">Keahlian</div>
+                    <div class="dosen-modal-expertise" id="modalExpertise"></div>
+                </div>
+                <div id="modalEduSection">
+                    <div class="dosen-modal-section-title">Pendidikan</div>
+                    <div class="dosen-modal-edu" id="modalEdu"></div>
+                </div>
+                <div id="modalPubSection">
+                    <div class="dosen-modal-section-title">Publikasi</div>
+                    <div class="dosen-modal-pubs" id="modalPubs"></div>
+                </div>
+            </div>
+            <div class="dosen-modal-footer" id="modalFooter"></div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <a class="navbar-brand" href="index.html">
+            <img src="https://new.upitra.ac.id/images/favicon.png" alt="Logo UPITRA" class="brand-icon" />
+            <span class="brand-name">Universitas Pignatelli Triputra</span>
+        </a>
+        <a href="index.html" class="navbar-back">← Kembali</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-eyebrow">Fakultas Sains & Teknologi</p>
+            <h1 class="hero-title">S1 Informatika</h1>
+            <p class="hero-desc">Memuat data...</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Akreditasi</span>
+                    <span class="hero-meta-value" data-meta="akreditasi">—</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Jenjang</span>
+                    <span class="hero-meta-value">Sarjana (S1)</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Fakultas</span>
+                    <span class="hero-meta-value" data-meta="fakultas">—</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <div class="section">
+            <h2 class="section-title">Kurikulum</h2>
+            <div class="tabs" id="semesterTabs"></div>
+            <div id="semesterPanels"></div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Dosen</h2>
+            <div class="dosen-grid" id="dosenGrid"></div>
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        const BASE_IMG  = 'https://new.upitra.ac.id';
+        const API_PRODI = 'https://new.upitra.ac.id/api/prodi/informatika';
+        const API_DOSEN = 'https://new.upitra.ac.id/api/dosen?prodi=Informatika&active=true';
+
+        const tabsEl    = document.getElementById('semesterTabs');
+        const panelsEl  = document.getElementById('semesterPanels');
+        const dosenGrid = document.getElementById('dosenGrid');
+
+        function renderKurikulum(kurikulum) {
+            kurikulum.forEach((sem, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+                btn.textContent = sem.semester;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(`panel-${i}`).classList.add('active');
+                });
+                tabsEl.appendChild(btn);
+
+                const totalSks = sem.courses.reduce((sum, c) => sum + c.sks, 0);
+                const panel = document.createElement('div');
+                panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
+                panel.id = `panel-${i}`;
+                panel.innerHTML = `
+                    <table class="course-table">
+                        <thead>
+                            <tr>
+                                <th style="width:48px">#</th>
+                                <th>Mata Kuliah</th>
+                                <th style="width:80px">SKS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${sem.courses.map(c => `
+                                <tr>
+                                    <td>${c.code}</td>
+                                    <td>${c.name}</td>
+                                    <td><span class="sks-badge">${c.sks}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    <div class="total-sks">Total SKS semester ini: <strong>${totalSks} SKS</strong></div>
+                `;
+                panelsEl.appendChild(panel);
+            });
+        }
+
+        const modal      = document.getElementById('dosenModal');
+        const modalClose = document.getElementById('dosenModalClose');
+
+        function openDosenModal(d) {
+            const fallback = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='72'><rect width='72' height='72' fill='%23f0f0f0'/><text x='36' y='44' text-anchor='middle' font-size='28'>👤</text></svg>`;
+            document.getElementById('modalPhoto').src       = BASE_IMG + d.photo;
+            document.getElementById('modalPhoto').onerror  = function() { this.src = fallback; };
+            document.getElementById('modalPhoto').alt       = d.name;
+            document.getElementById('modalName').textContent    = d.name;
+            document.getElementById('modalJabatan').textContent = d.jabatan;
+            document.getElementById('modalEmail').textContent   = d.email;
+            document.getElementById('modalEmail').href          = `mailto:${d.email}`;
+
+            const expertise = d.expertise || [];
+            document.getElementById('modalExpertiseSection').style.display = expertise.length ? '' : 'none';
+            document.getElementById('modalExpertise').innerHTML = expertise
+                .map(e => `<span class="expertise-tag">${e}</span>`).join('');
+
+            const edu = d.education || [];
+            document.getElementById('modalEduSection').style.display = edu.length ? '' : 'none';
+            document.getElementById('modalEdu').innerHTML = edu.map(e => `
+                <div class="edu-item">
+                    <span class="edu-degree-row">${e.degree} — ${e.major}</span>
+                    <span class="edu-detail">${e.institution}, ${e.year}</span>
+                </div>
+            `).join('');
+
+            const pubs = d.publications || [];
+            document.getElementById('modalPubSection').style.display = pubs.length ? '' : 'none';
+            document.getElementById('modalPubs').innerHTML = pubs
+                .map(p => `<div class="pub-item">${p}</div>`).join('');
+
+            const footer = document.getElementById('modalFooter');
+            footer.innerHTML = d.linkedin
+                ? `<a href="${d.linkedin}" target="_blank" rel="noopener" class="dosen-sinta-link">Lihat Profil SINTA →</a>`
+                : '';
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDosenModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeDosenModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeDosenModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDosenModal(); });
+
+        function renderDosen(dosen) {
+            if (!dosen.length) {
+                dosenGrid.innerHTML = '<p style="color:#999;font-size:.9rem">Data dosen belum tersedia.</p>';
+                return;
+            }
+            const fallback = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><rect width='80' height='80' fill='%23f0f0f0'/><text x='40' y='50' text-anchor='middle' font-size='32'>👤</text></svg>`;
+            dosenGrid.innerHTML = dosen.map((d, i) => `
+                <div class="dosen-card" data-index="${i}" role="button" tabindex="0" aria-label="Lihat profil ${d.name}">
+                    <div class="dosen-photo-wrap">
+                        <img
+                            src="${BASE_IMG}${d.photo}"
+                            alt="${d.name}"
+                            class="dosen-photo"
+                            onerror="this.src='${fallback}'"
+                        />
+                    </div>
+                    <div class="dosen-name">${d.name}</div>
+                    <div class="dosen-jabatan">${d.jabatan}</div>
+                    <div class="dosen-expertise-preview">
+                        ${(d.expertise || []).slice(0, 2).map(e => `<span class="expertise-tag">${e}</span>`).join('')}
+                        ${(d.expertise || []).length > 2 ? `<span class="expertise-tag">+${d.expertise.length - 2}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            dosenGrid.querySelectorAll('.dosen-card').forEach((card, i) => {
+                const handler = () => openDosenModal(dosen[i]);
+                card.addEventListener('click', handler);
+                card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') handler(); });
+            });
+        }
+
+        function renderHero(prodi) {
+            document.querySelector('.hero-title').textContent = prodi.hero_title || prodi.name;
+            document.querySelector('.hero-desc').textContent  = prodi.description || '';
+            document.querySelector('[data-meta="akreditasi"]').textContent = prodi.accreditation || '-';
+            document.querySelector('[data-meta="fakultas"]').textContent   = prodi.faculty || '-';
+            document.title = `${prodi.name} — FST UPITRA`;
+        }
+
+        function showError(el, msg) {
+            el.innerHTML = `<p style="color:#f87171;font-size:.875rem">${msg}</p>`;
+        }
+
+        async function init() {
+            const [prodiRes, dosenRes] = await Promise.all([
+                fetch(API_PRODI).then(r => r.json()).catch(() => null),
+                fetch(API_DOSEN).then(r => r.json()).catch(() => null)
+            ]);
+
+            if (prodiRes) {
+                renderHero(prodiRes);
+                if (prodiRes.kurikulum?.length) {
+                    renderKurikulum(prodiRes.kurikulum);
+                } else {
+                    showError(panelsEl, 'Data kurikulum tidak tersedia.');
+                }
+            } else {
+                showError(panelsEl, 'Gagal memuat data prodi.');
+            }
+
+            if (dosenRes) {
+                const list = Array.isArray(dosenRes) ? dosenRes : (dosenRes.data || []);
+                renderDosen(list);
+            } else {
+                showError(dosenGrid, 'Gagal memuat data dosen.');
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

@@ -4,7 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+ 
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <span class="brand-icon">♠</span>
+            <span class="brand-name">SPADE</span>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="#" class="nav-link active">Home</a></li>
+            <li><a href="#" class="nav-link">About</a></li>
+            <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="navbar-hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <script>
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.navbar-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function () {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        const data = [
+            {
+                namaProdi: "S1 - Sistem Informasi",
+                descProdi: "Fokus pada Cyber Business Analyst, Big Data Scientist, Cyber System Architect, Cyber Security Analyst, Cyber System Engineer, dan Application And Device Developer"
+            },
+            {
+                namaProdi: "S1 - Informatika",
+                descProdi: "Fokus pada Artificial Intelligence Engineer, Data Engineer, Data Scientist, Data Analyst dan Data Administrator"
+            },
+            {
+                namaProdi: "S1 - Software Engineering",
+                descProdi: "Fokus pada Software Project Manager, Requirement Engineer, Software Designer, Software Engineer dan Software QA Engineer"
+            }
+        ];
+    </script>
+   <style>
         * {
             margin: 0;
             padding: 0;
@@ -157,60 +212,5 @@
             }
         }
     </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <span class="brand-icon">♠</span>
-            <span class="brand-name">SPADE</span>
-        </div>
-        <ul class="navbar-links">
-            <li><a href="#" class="nav-link active">Home</a></li>
-            <li><a href="#" class="nav-link">About</a></li>
-            <li><a href="#" class="nav-link">Contact</a></li>
-        </ul>
-        <button class="navbar-hamburger" id="hamburger" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
-
-    <script>
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
-        });
-
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.navbar-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function () {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        const data = [
-            {
-                namaProdi: "S1 - Sistem Informasi",
-                descProdi: "Fokus pada Cyber Business Analyst, Big Data Scientist, Cyber System Architect, Cyber Security Analyst, Cyber System Engineer, dan Application And Device Developer"
-            },
-            {
-                namaProdi: "S1 - Informatika",
-                descProdi: "Fokus pada Artificial Intelligence Engineer, Data Engineer, Data Scientist, Data Analyst dan Data Administrator"
-            },
-            {
-                namaProdi: "S1 - Software Engineering",
-                descProdi: "Fokus pada Software Project Manager, Requirement Engineer, Software Designer, Software Engineer dan Software QA Engineer"
-            }
-        ];
-    </script>
-
 </body>
 </html>

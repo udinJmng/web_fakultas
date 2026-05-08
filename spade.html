@@ -65,21 +65,19 @@
             </div>
         </div>
     </section>
-<br>
-    <div class="listProdi">
-        <div class="boxProdi">
-            <div class="headerProdi">S1 - Sistem Informasi</div>
-            <div class="descProdi">Aku suka DIAKERENBANGET.</div>
+
+    <section class="prodiSection">
+        <div class="prodiSection-inner">
+            <div class="prodiSection-header">
+                <span class="prodiSection-tag">Program Studi</span>
+                <h2 class="prodiSection-title">Pilih Jalur <span class="prodiSection-highlight">Karirmu</span></h2>
+                <p class="prodiSection-sub">Tiga program studi unggulan yang dirancang untuk menjawab kebutuhan industri teknologi masa kini.</p>
+            </div>
+            <div class="listProdi" id="listProdi">
+                <!-- Rendered by JS -->
+            </div>
         </div>
-        <div class="boxProdi">
-            <div class="headerProdi">S1 - Informatika</div>
-            <div class="descProdi">Aku suka tenxi.</div>
-        </div>
-        <div class="boxProdi">
-            <div class="headerProdi">S1 - Software Engineer</div>
-            <div class="descProdi">Aku suka wyrscape.</div>
-        </div>
-    </div>
+    </section>
 
     <script>
         const navbar = document.querySelector('.navbar');
@@ -114,6 +112,15 @@
                 descProdi: "Fokus pada Software Project Manager, Requirement Engineer, Software Designer, Software Engineer dan Software QA Engineer"
             }
         ];
+
+        // Render prodi cards dari data array
+        const listProdi = document.getElementById('listProdi');
+        listProdi.innerHTML = data.map(prodi => `
+            <div class="boxProdi">
+                <div class="headerProdi">${prodi.namaProdi}</div>
+                <div class="descProdi">${prodi.descProdi}</div>
+            </div>
+        `).join('');
     </script>
    <style>
         * {
@@ -126,21 +133,113 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        /* ── Prodi Section ── */
+        .prodiSection {
+            background: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .prodiSection-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prodiSection-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .prodiSection-tag {
+            display: inline-block;
+            background: rgba(46, 161, 214, 0.1);
+            color: #2ea1d6;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+
+        .prodiSection-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: #1a1a2e;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .prodiSection-highlight {
+            color: #2ea1d6;
+        }
+
+        .prodiSection-sub {
+            font-size: 0.97rem;
+            color: #666;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .listProdi {
-            display: flex;
-            gap:5vw;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .boxProdi {
-            border: 1px solid #0f2027;
-            padding: 15px;
-            border-radius: 5px;
+            background: #fff;
+            border: 2px solid #e8f4fb;
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .headerProdi text .descProdi text {
-            text-align: center;
-            font-size: 25px;
+        .boxProdi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2ea1d6, #7dd8f8);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .boxProdi:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(46, 161, 214, 0.2);
+            border-color: #2ea1d6;
+        }
+
+        .boxProdi:hover::before {
+            transform: scaleX(1);
+        }
+
+        .headerProdi {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .descProdi {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .listProdi {
+                grid-template-columns: 1fr;
+            }
         }
 
         .headerText {

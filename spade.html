@@ -25,7 +25,6 @@
         </button>
     </nav>
 
-    <!-- Hero / Header -->
     <section class="headerText">
         <div class="headerText-inner">
             <span class="headerText-badge">Universitas Pignatelli Triputra</span>
@@ -35,7 +34,6 @@
         <div class="headerText-decoration" aria-hidden="true">FST</div>
     </section>
 
-    <!-- About Panel -->
     <section class="aboutPanel">
         <div class="aboutPanel-inner">
             <div class="aboutPanel-content">
@@ -67,6 +65,21 @@
             </div>
         </div>
     </section>
+<br>
+    <div class="listProdi">
+        <div class="boxProdi">
+            <div class="headerProdi">S1 - Sistem Informasi</div>
+            <div class="descProdi">Aku suka DIAKERENBANGET.</div>
+        </div>
+        <div class="boxProdi">
+            <div class="headerProdi">S1 - Informatika</div>
+            <div class="descProdi">Aku suka tenxi.</div>
+        </div>
+        <div class="boxProdi">
+            <div class="headerProdi">S1 - Software Engineer</div>
+            <div class="descProdi">Aku suka wyrscape.</div>
+        </div>
+    </div>
 
     <script>
         const navbar = document.querySelector('.navbar');
@@ -111,6 +124,23 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .listProdi {
+            display: flex;
+            gap:5vw;
+            justify-content: center;
+        }
+
+        .boxProdi {
+            border: 1px solid #0f2027;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .headerProdi text .descProdi text {
+            text-align: center;
+            font-size: 25px;
         }
 
         .headerText {

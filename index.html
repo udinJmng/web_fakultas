@@ -307,6 +307,9 @@
             border-radius: 12px;
             padding: 1.75rem 1.5rem;
             transition: box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
         .boxProdi:hover {
@@ -326,6 +329,26 @@
             font-size: 0.85rem;
             color: #777;
             line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .prodi-link {
+            display: inline-block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #111;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 7px;
+            width: fit-content;
+            transition: border-color 0.15s, background 0.15s;
+        }
+
+        .prodi-link:hover {
+            border-color: #111;
+            background: #f9f9f9;
         }
 
         @media (max-width: 640px) {
@@ -707,17 +730,20 @@
             {
                 namaProdi: "S1 - Sistem Informasi",
                 descProdi: "Fokus pada Cyber Business Analyst, Big Data Scientist, Cyber System Architect, Cyber Security Analyst, Cyber System Engineer, dan Application And Device Developer",
-                api: "https://new.upitra.ac.id/api/prodi/sistem-informasi"
+                api: "https://new.upitra.ac.id/api/prodi/sistem-informasi",
+                page: "prodi_si.html"
             },
             {
                 namaProdi: "S1 - Informatika",
                 descProdi: "Fokus pada Artificial Intelligence Engineer, Data Engineer, Data Scientist, Data Analyst dan Data Administrator",
-                api: "https://new.upitra.ac.id/api/prodi/informatika"
+                api: "https://new.upitra.ac.id/api/prodi/informatika",
+                page: "prodi_if.html"
             },
             {
                 namaProdi: "S1 - Software Engineering",
                 descProdi: "Fokus pada Software Project Manager, Requirement Engineer, Software Designer, Software Engineer dan Software QA Engineer",
-                api: "https://new.upitra.ac.id/api/prodi/software-engineering"
+                api: "https://new.upitra.ac.id/api/prodi/software-engineering",
+                page: "prodi_se.html"
             }
         ];
 
@@ -726,6 +752,7 @@
             <div class="boxProdi">
                 <div class="headerProdi">${prodi.namaProdi}</div>
                 <div class="descProdi">${prodi.descProdi}</div>
+                <a href="${prodi.page}" class="prodi-link">Lihat lebih dalam →</a>
             </div>
         `).join('');
 

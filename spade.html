@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fakultas Sains Dan Teknologi — Universitas Pignatelli Triputra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,9 +15,10 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #222;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
             background: #fff;
+            line-height: 1.6;
         }
 
         .navbar {
@@ -24,60 +28,65 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
-            height: 60px;
-            background: #fff;
-            border-bottom: 1px solid #e5e7eb;
+            padding: 0 2.5rem;
+            height: 64px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #f0f0f0;
             transition: box-shadow 0.2s;
         }
 
         .navbar.scrolled {
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 1px 16px rgba(0,0,0,0.07);
         }
 
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             user-select: none;
+            text-decoration: none;
         }
 
         .brand-icon {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             object-fit: contain;
+            display: block;
         }
 
         .brand-name {
-            font-size: 1rem;
+            font-size: 0.92rem;
             font-weight: 700;
             color: #111;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
         }
 
         .navbar-links {
             display: flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.1rem;
             list-style: none;
         }
 
         .nav-link {
-            padding: 0.4rem 0.9rem;
-            font-size: 0.9rem;
+            padding: 0.45rem 1rem;
+            font-size: 0.875rem;
             font-weight: 500;
             color: #555;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: color 0.15s, background 0.15s;
         }
 
         .nav-link:hover {
-            color: #2563eb;
-            background: #eff6ff;
+            color: #111;
+            background: #f4f4f5;
         }
 
         .nav-link.active {
-            color: #2563eb;
+            color: #111;
             font-weight: 600;
         }
 
@@ -98,9 +107,14 @@
             height: 2px;
             background: #333;
             border-radius: 2px;
+            transition: opacity 0.2s;
         }
 
         @media (max-width: 640px) {
+            .navbar {
+                padding: 0 1.25rem;
+            }
+
             .navbar-hamburger {
                 display: flex;
             }
@@ -108,15 +122,15 @@
             .navbar-links {
                 display: none;
                 position: absolute;
-                top: 60px;
+                top: 64px;
                 left: 0;
                 right: 0;
                 flex-direction: column;
                 align-items: flex-start;
                 background: #fff;
-                border-bottom: 1px solid #e5e7eb;
+                border-bottom: 1px solid #f0f0f0;
                 padding: 0.5rem 0;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.06);
             }
 
             .navbar-links.open {
@@ -130,161 +144,185 @@
             .nav-link {
                 display: block;
                 width: 100%;
-                padding: 0.75rem 2rem;
+                padding: 0.75rem 1.5rem;
                 border-radius: 0;
             }
         }
 
-        .headerText {
-            background: #1e2d3d;
+        .hero {
+            background: #0f1f2e;
             color: #fff;
-            padding: 4rem 2rem 3.5rem;
+            padding: 5rem 2.5rem 4.5rem;
             text-align: center;
         }
 
-        .headerText-inner {
-            max-width: 680px;
+        .hero-inner {
+            max-width: 720px;
             margin: 0 auto;
         }
 
-        .headerText-title {
-            font-size: clamp(1.9rem, 5vw, 3rem);
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #7eb8e8;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.25rem);
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            color: #fff;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.75;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .about {
+            padding: 4.5rem 2.5rem;
+            background: #fff;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .about-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #888;
             margin-bottom: 1rem;
         }
 
-        .headerText-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.7;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .aboutPanel {
-            background: #f5f5f5;
-            padding: 3rem 2rem;
-        }
-
-        .aboutPanel-inner {
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        .aboutPanel-title {
-            font-size: clamp(1.4rem, 3vw, 1.9rem);
+        .about-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
             color: #111;
             line-height: 1.3;
-            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
         }
 
-        .aboutPanel-desc {
+        .about-text {
             font-size: 0.97rem;
             color: #555;
-            line-height: 1.8;
-            margin-bottom: 0.75rem;
+            line-height: 1.85;
+            margin-bottom: 0.85rem;
+            max-width: 680px;
         }
 
-        .aboutPanel-actions {
+        .about-actions {
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
         }
 
-        .btn-primary {
+        .btn {
             display: inline-block;
-            background: #2563eb;
-            color: #fff;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 600;
             padding: 0.6rem 1.4rem;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
-            transition: background 0.15s;
+            transition: all 0.15s;
         }
 
-        .btn-primary:hover {
-            background: #1d4ed8;
+        .btn-dark {
+            background: #111;
+            color: #fff;
         }
 
-        .btn-secondary {
-            display: inline-block;
+        .btn-dark:hover {
+            background: #333;
+        }
+
+        .btn-outline {
             background: transparent;
-            color: #2563eb;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 0.6rem 1.4rem;
-            border-radius: 6px;
-            border: 1.5px solid #2563eb;
-            text-decoration: none;
-            transition: background 0.15s, color 0.15s;
+            color: #111;
+            border: 1.5px solid #d4d4d4;
         }
 
-        .btn-secondary:hover {
-            background: #2563eb;
-            color: #fff;
+        .btn-outline:hover {
+            border-color: #111;
+            background: #f9f9f9;
         }
 
-        .prodiSection {
-            background: #fff;
-            padding: 3rem 2rem;
+        .prodi {
+            padding: 4.5rem 2.5rem;
+            background: #fafafa;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .prodiSection-inner {
+        .prodi-inner {
             max-width: 1100px;
             margin: 0 auto;
         }
 
-        .prodiSection-header {
-            margin-bottom: 2rem;
+        .section-header {
+            margin-bottom: 2.5rem;
         }
 
-        .prodiSection-title {
-            font-size: clamp(1.4rem, 3vw, 1.9rem);
+        .section-title {
+            font-size: clamp(1.4rem, 3vw, 1.85rem);
             font-weight: 700;
             color: #111;
+            letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
         }
 
-        .prodiSection-sub {
-            font-size: 0.95rem;
-            color: #666;
+        .section-sub {
+            font-size: 0.93rem;
+            color: #777;
+            max-width: 560px;
             line-height: 1.7;
-            max-width: 580px;
         }
 
         .listProdi {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         .boxProdi {
             background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
             padding: 1.75rem 1.5rem;
-            transition: box-shadow 0.2s, transform 0.2s;
+            transition: box-shadow 0.2s, border-color 0.2s;
         }
 
         .boxProdi:hover {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.09);
-            transform: translateY(-3px);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border-color: #d0d0d0;
         }
 
         .headerProdi {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #111;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
         }
 
         .descProdi {
-            font-size: 0.88rem;
-            color: #666;
+            font-size: 0.85rem;
+            color: #777;
             line-height: 1.7;
         }
 
@@ -294,36 +332,18 @@
             }
         }
 
-        .kegiatanSection {
-            background: #f5f5f5;
-            padding: 3rem 2rem;
+        .kegiatan {
+            padding: 4.5rem 2.5rem;
+            background: #fff;
         }
 
-        .kegiatanSection-inner {
+        .kegiatan-inner {
             max-width: 1100px;
             margin: 0 auto;
         }
 
-        .kegiatanSection-header {
-            margin-bottom: 2rem;
-        }
-
-        .kegiatanSection-title {
-            font-size: clamp(1.4rem, 3vw, 1.9rem);
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 0.5rem;
-        }
-
-        .kegiatanSection-sub {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.7;
-            max-width: 560px;
-        }
-
         .kegiatanProdi {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .kegiatanProdi:last-child {
@@ -333,16 +353,21 @@
         .kegiatanProdi-header {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px solid #d1d5db;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
         .kegiatanProdi-name {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             color: #111;
+            letter-spacing: -0.01em;
+        }
+
+        .kegiatanProdi-divider {
+            flex: 1;
+            height: 1px;
+            background: #ebebeb;
         }
 
         .kegiatanGrid {
@@ -353,9 +378,9 @@
 
         .kegiatanCard {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #ebebeb;
             transition: box-shadow 0.2s, transform 0.2s;
             display: flex;
             flex-direction: column;
@@ -363,15 +388,15 @@
         }
 
         .kegiatanCard:hover {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
 
         .kegiatanCard-img-wrap {
             width: 100%;
             aspect-ratio: 16 / 9;
             overflow: hidden;
-            background: #e5e7eb;
+            background: #f0f0f0;
             position: relative;
         }
 
@@ -382,15 +407,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            background: #e5e7eb;
+            font-size: 1.75rem;
+            background: #f0f0f0;
         }
 
         .kegiatanCard-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.35s ease;
         }
 
         .kegiatanCard:hover .kegiatanCard-img {
@@ -398,30 +423,31 @@
         }
 
         .kegiatanCard-body {
-            padding: 1rem 1rem 1.25rem;
+            padding: 1rem 1.1rem 1.25rem;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.35rem;
             flex: 1;
         }
 
         .kegiatanCard-title {
-            font-size: 0.93rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #111;
-            line-height: 1.4;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
         }
 
         .kegiatanCard-desc {
-            font-size: 0.83rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: #888;
             line-height: 1.65;
         }
 
         .kegiatan-empty {
-            color: #999;
-            font-size: 0.9rem;
-            padding: 0.75rem 0;
+            color: #bbb;
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
         }
 
         .kegiatanCard.skeleton {
@@ -431,32 +457,27 @@
         .skeleton-img {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 50%, #f0f0f0 75%);
             background-size: 200% 100%;
-            animation: shimmer 1.4s infinite;
+            animation: shimmer 1.5s infinite;
         }
 
         .skeleton-line {
-            height: 0.7rem;
+            height: 0.65rem;
             border-radius: 4px;
-            background: linear-gradient(90deg, #e5e7eb 25%, #d1d5db 50%, #e5e7eb 75%);
+            background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 50%, #f0f0f0 75%);
             background-size: 200% 100%;
-            animation: shimmer 1.4s infinite;
+            animation: shimmer 1.5s infinite;
         }
 
         .skeleton-title {
-            width: 75%;
-            height: 0.85rem;
+            width: 72%;
+            height: 0.8rem;
             margin-bottom: 0.2rem;
         }
 
-        .skeleton-desc {
-            width: 100%;
-        }
-
-        .skeleton-desc.short {
-            width: 55%;
-        }
+        .skeleton-desc { width: 100%; }
+        .skeleton-desc.short { width: 52%; }
 
         @keyframes shimmer {
             0%   { background-position: 200% 0; }
@@ -473,14 +494,14 @@
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.2s ease;
         }
 
         .modal-overlay.active {
@@ -490,16 +511,16 @@
 
         .modal-box {
             background: #fff;
-            border-radius: 12px;
-            max-width: 620px;
+            border-radius: 14px;
+            max-width: 600px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18);
             position: relative;
-            transform: translateY(16px);
+            transform: translateY(12px);
             opacity: 0;
-            transition: transform 0.25s ease, opacity 0.25s ease;
+            transition: transform 0.22s ease, opacity 0.22s ease;
         }
 
         .modal-overlay.active .modal-box {
@@ -516,30 +537,31 @@
             height: 2rem;
             border-radius: 50%;
             border: none;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-            font-size: 1.2rem;
-            line-height: 1;
+            background: rgba(255,255,255,0.92);
+            color: #444;
+            font-size: 1.1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.15);
-            transition: background 0.15s;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.12);
+            transition: background 0.15s, transform 0.15s;
         }
 
         .modal-close:hover {
             background: #fff;
+            transform: scale(1.08);
         }
 
         .modal-img-wrap {
             width: 100%;
-            background: #111;
+            background: #0f1f2e;
             display: flex;
             align-items: center;
             justify-content: center;
             max-height: 55vh;
             overflow: hidden;
+            border-radius: 14px 14px 0 0;
         }
 
         .modal-img {
@@ -551,46 +573,39 @@
         }
 
         .modal-body {
-            padding: 1.5rem 1.75rem 1.75rem;
+            padding: 1.5rem 1.75rem 2rem;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
 
         .modal-prodi-tag {
-            display: inline-block;
-            background: #eff6ff;
-            color: #2563eb;
-            font-size: 0.73rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            padding: 0.2rem 0.65rem;
-            border-radius: 4px;
-            width: fit-content;
+            color: #888;
         }
 
         .modal-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #111;
             line-height: 1.4;
+            letter-spacing: -0.01em;
         }
 
         .modal-desc {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.75;
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.8;
         }
 
         @media (max-width: 480px) {
-            .modal-body {
-                padding: 1.25rem 1.25rem 1.5rem;
-            }
-
-            .modal-title {
-                font-size: 1rem;
-            }
+            .hero { padding: 3.5rem 1.5rem 3rem; }
+            .about, .prodi, .kegiatan { padding: 3rem 1.5rem; }
+            .modal-body { padding: 1.25rem 1.25rem 1.5rem; }
+            .modal-title { font-size: 1rem; }
         }
     </style>
 </head>
@@ -611,10 +626,10 @@
     </div>
 
     <nav class="navbar">
-        <div class="navbar-brand">
-            <span class="brand-icon"><img src="https://new.upitra.ac.id/images/favicon.png" alt="Logo UPITRA" width="32" height="32" style="object-fit:contain;display:block;" /></span>
+        <a class="navbar-brand" href="#">
+            <img src="https://new.upitra.ac.id/images/favicon.png" alt="Logo UPITRA" class="brand-icon" />
             <span class="brand-name">Universitas Pignatelli Triputra</span>
-        </div>
+        </a>
         <ul class="navbar-links">
             <li><a href="#" class="nav-link active">Home</a></li>
             <li><a href="#" class="nav-link">About</a></li>
@@ -627,40 +642,41 @@
         </button>
     </nav>
 
-    <section class="headerText">
-        <div class="headerText-inner">
-            <h1 class="headerText-title">Fakultas Sains Dan Teknologi</h1>
-            <p class="headerText-sub">Mencetak talenta digital unggul yang siap menghadapi tantangan industri masa depan.</p>
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-eyebrow">Universitas Pignatelli Triputra</p>
+            <h1 class="hero-title">Fakultas Sains<br>Dan Teknologi</h1>
+            <p class="hero-desc">Mencetak talenta digital unggul yang siap menghadapi tantangan industri masa depan.</p>
         </div>
     </section>
 
-    <section class="aboutPanel">
-        <div class="aboutPanel-inner">
-            <h2 class="aboutPanel-title">Membangun Lingkup Teknologi yang Semakin Meluas</h2>
-            <p class="aboutPanel-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, aut laboriosam corporis similique libero ducimus exercitationem, eos dolorem non inventore perferendis. Quas quo voluptatem, a aut mollitia provident in.</p>
-            <p class="aboutPanel-desc">Fakultas Sains dan Teknologi hadir untuk menjawab kebutuhan industri dengan program studi yang relevan, tenaga pengajar berpengalaman, dan kurikulum yang terus diperbarui sesuai perkembangan zaman.</p>
-            <div class="aboutPanel-actions">
-                <a href="#" class="btn-primary">Contact Us</a>
-                <a href="#" class="btn-secondary">Pelajari Lebih Lanjut</a>
+    <section class="about">
+        <div class="about-inner">
+            <p class="section-label">Tentang FST</p>
+            <h2 class="about-title">Membangun Lingkup Teknologi yang Semakin Meluas</h2>
+            <p class="about-text">Fakultas Sains dan Teknologi hadir untuk menjawab kebutuhan industri dengan program studi yang relevan, tenaga pengajar berpengalaman, dan kurikulum yang terus diperbarui sesuai perkembangan zaman.</p>
+            <div class="about-actions">
+                <a href="#" class="btn btn-dark">Hubungi Kami</a>
+                <a href="#" class="btn btn-outline">Pelajari Lebih Lanjut</a>
             </div>
         </div>
     </section>
 
-    <section class="prodiSection">
-        <div class="prodiSection-inner">
-            <div class="prodiSection-header">
-                <h2 class="prodiSection-title">Program Studi</h2>
-                <p class="prodiSection-sub">Tiga program studi unggulan yang dirancang untuk menjawab kebutuhan industri teknologi masa kini.</p>
+    <section class="prodi">
+        <div class="prodi-inner">
+            <div class="section-header">
+                <h2 class="section-title">Program Studi</h2>
+                <p class="section-sub">Tiga program studi yang dirancang untuk menjawab kebutuhan industri teknologi masa kini.</p>
             </div>
             <div class="listProdi" id="listProdi"></div>
         </div>
     </section>
 
-    <section class="kegiatanSection">
-        <div class="kegiatanSection-inner">
-            <div class="kegiatanSection-header">
-                <h2 class="kegiatanSection-title">Kegiatan Mahasiswa</h2>
-                <p class="kegiatanSection-sub">Dokumentasi kegiatan dan pencapaian mahasiswa dari setiap program studi.</p>
+    <section class="kegiatan">
+        <div class="kegiatan-inner">
+            <div class="section-header">
+                <h2 class="section-title">Kegiatan Mahasiswa</h2>
+                <p class="section-sub">Dokumentasi kegiatan dan pencapaian mahasiswa dari setiap program studi.</p>
             </div>
             <div id="kegiatanContainer"></div>
         </div>
@@ -718,6 +734,7 @@
             <div class="kegiatanProdi" id="kegiatan-${i}">
                 <div class="kegiatanProdi-header">
                     <h3 class="kegiatanProdi-name">${prodi.namaProdi}</h3>
+                    <div class="kegiatanProdi-divider"></div>
                 </div>
                 <div class="kegiatanGrid" id="kegiatanGrid-${i}">
                     ${[1,2,3].map(() => `
@@ -754,7 +771,7 @@
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
-            setTimeout(() => { modalImg.src = ''; }, 300);
+            setTimeout(() => { modalImg.src = ''; }, 250);
         }
 
         modalClose.addEventListener('click', closeModal);

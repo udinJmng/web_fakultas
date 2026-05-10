@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakultas Sains & Teknologi | Universitas Pignatelli Triputra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-faculty">FST</span>
+                    <span class="logo-uni">UPITRA</span>
+                </div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Beranda</a></li>
+                <li><a href="#tentang" class="nav-link">Tentang FST</a></li>
+                <li><a href="#program-studi" class="nav-link">Program Studi</a></li>
+                <li><a href="#kurikulum" class="nav-link">Kurikulum</a></li>
+                <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                <li><a href="#kontak" class="nav-link">Kontak</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>Fakultas Sains & Teknologi</span>
+            </div>
+            <h1 class="hero-title">
+                Cetak Talenta
+                <span class="hero-highlight">Digital Masa Depan</span>
+            </h1>
+            <p class="hero-description">
+                FST UPITRA mempersiapkan lulusan yang inovatif, berdaya saing global, dan siap menghadapi
+                revolusi industri 4.0 melalui tiga program studi unggulan di bidang teknologi.
+            </p>
+            <div class="hero-buttons">
+                <a href="#program-studi" class="btn btn-primary">
+                    <span>Jelajahi Prodi</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+                <a href="#tentang" class="btn btn-outline">
+                    <span>Selengkapnya</span>
+                    <i class="fa-solid fa-circle-info"></i>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat-item">
+                    <span class="hero-stat-number" data-target="3">0</span>
+                    <span class="hero-stat-label">Program Studi</span>
+                </div>
+                <div class="hero-stat-item">
+                    <span class="hero-stat-number" data-target="1200">0</span>
+                    <span class="hero-stat-label">+ Mahasiswa Aktif</span>
+                </div>
+                <div class="hero-stat-item">
+                    <span class="hero-stat-number" data-target="50">0</span>
+                    <span class="hero-stat-label">+ Dosen Ahli</span>
+                </div>
+                <div class="hero-stat-item">
+                    <span class="hero-stat-number" data-target="95">0</span>
+                    <span class="hero-stat-label">% Lulusan Terserap</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About FST Section -->
+    <section class="about" id="tentang">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Tentang Kami</span>
+                <h2 class="section-title">Fakultas Sains & Teknologi</h2>
+                <p class="section-subtitle">
+                    Pusat keunggulan pendidikan teknologi yang menggabungkan kurikulum industri,
+                    riset inovatif, dan pengalaman praktis untuk membentuk pemimpin teknologi masa depan.
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Visi</h3>
+                    <p>Menjadi fakultas unggul dalam bidang sains dan teknologi, berorientasi global, menjunjung tinggi nilai integritas dan semangat kebhinekaan.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Misi</h3>
+                    <p>Menyelenggarakan pendidikan berkualitas, menghasilkan lulusan kompeten dan berintegritas, serta berkontribusi melalui riset transformatif bagi masyarakat.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Kemitraan</h3>
+                    <p>Membangun jejaring berkelanjutan dengan dunia pendidikan, masyarakat, pemerintah, dan industri untuk keunggulan transformatif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="program-studi">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Program Studi</span>
+                <h2 class="section-title">Pilihan Program Studi S1</h2>
+                <p class="section-subtitle">
+                    Tiga program studi unggulan yang dirancang untuk memenuhi kebutuhan industri teknologi terkini.
+                </p>
+            </div>
+            <div class="program-tabs-nav">
+                <button class="program-tab-btn active" data-prodi="rpl">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Software Engineering</span>
+                    <small>Rekayasa Perangkat Lunak</small>
+                </button>
+                <button class="program-tab-btn" data-prodi="informatika">
+                    <i class="fa-solid fa-cpu"></i>
+                    <span>Informatika</span>
+                    <small>Computer Science</small>
+                </button>
+                <button class="program-tab-btn" data-prodi="si">
+                    <i class="fa-solid fa-monitor"></i>
+                    <span>Sistem Informasi</span>
+                    <small>Information Systems</small>
+                </button>
+            </div>
+
+            <!-- RPL Tab -->
+            <div class="program-tab-content active" id="tab-rpl">
+                <div class="program-detail">
+                    <div class="program-header">
+                        <div class="program-badge">Akreditasi: <strong>Baik</strong></div>
+                        <h3>Software Engineering</h3>
+                        <p class="program-desc">Program Studi Software Engineering UPITRA mempersiapkan mahasiswa menjadi software engineer profesional yang mampu merancang, mengembangkan, dan memelihara perangkat lunak berkualitas tinggi.</p>
+                    </div>
+                    <div class="program-vision">
+                        <h4><i class="fa-solid fa-eye"></i> Visi</h4>
+                        <p>Program studi yang unggul dalam bidang rekayasa perangkat lunak, berorientasi global, menjunjung tinggi nilai-nilai integritas dan bersemangat kebhinekaan.</p>
+                    </div>
+                    <div class="program-careers">
+                        <h4><i class="fa-solid fa-briefcase"></i> Prospek Karier</h4>
+                        <div class="career-grid">
+                            <div class="career-card"><i class="fa-solid fa-users-gear"></i><span>Software Project Manager</span></div>
+                            <div class="career-card"><i class="fa-solid fa-clipboard-list"></i><span>Requirement Engineer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-paint-brush"></i><span>Software Designer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-laptop-code"></i><span>Software Engineer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-shield-check"></i><span>Software QA Engineer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-lightbulb"></i><span>Technopreneur</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informatika Tab -->
+            <div class="program-tab-content" id="tab-informatika">
+                <div class="program-detail">
+                    <div class="program-header">
+                        <div class="program-badge">Akreditasi: <strong>Baik</strong></div>
+                        <h3>Informatika</h3>
+                        <p class="program-desc">Program Studi Informatika UPITRA mempersiapkan mahasiswa menjadi ahli di bidang ilmu komputer, kecerdasan buatan, dan teknologi informasi terkini.</p>
+                    </div>
+                    <div class="program-vision">
+                        <h4><i class="fa-solid fa-eye"></i> Visi</h4>
+                        <p>Program studi yang unggul dalam bidang informatika, berorientasi global, menjunjung tinggi nilai-nilai integritas dan bersemangat kebhinekaan.</p>
+                    </div>
+                    <div class="program-careers">
+                        <h4><i class="fa-solid fa-briefcase"></i> Prospek Karier</h4>
+                        <div class="career-grid">
+                            <div class="career-card"><i class="fa-solid fa-brain"></i><span>AI Engineer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-chart-bar"></i><span>Data Scientist</span></div>
+                            <div class="career-card"><i class="fa-solid fa-database"></i><span>Data Engineer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-magnifying-glass-chart"></i><span>Data Analyst</span></div>
+                            <div class="career-card"><i class="fa-solid fa-shield-halved"></i><span>Data Administrator</span></div>
+                            <div class="career-card"><i class="fa-solid fa-rocket"></i><span>Technopreneur</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SI Tab -->
+            <div class="program-tab-content" id="tab-si">
+                <div class="program-detail">
+                    <div class="program-header">
+                        <div class="program-badge">Akreditasi: <strong>Sangat Baik</strong></div>
+                        <h3>Sistem Informasi</h3>
+                        <p class="program-desc">Program Studi Sistem Informasi UPITRA dirancang untuk menghasilkan lulusan yang mampu merancang, mengembangkan, dan mengelola sistem informasi berbasis teknologi untuk mendukung kebutuhan bisnis dan organisasi.</p>
+                    </div>
+                    <div class="program-vision">
+                        <h4><i class="fa-solid fa-eye"></i> Visi</h4>
+                        <p>Program studi yang unggul dalam bidang sistem informasi, berorientasi global, menjunjung tinggi nilai-nilai integritas dan bersemangat kebhinekaan.</p>
+                    </div>
+                    <div class="program-careers">
+                        <h4><i class="fa-solid fa-briefcase"></i> Prospek Karier</h4>
+                        <div class="career-grid">
+                            <div class="career-card"><i class="fa-solid fa-chart-line"></i><span>Cyber Business Analyst</span></div>
+                            <div class="career-card"><i class="fa-solid fa-database"></i><span>Big Data Scientist</span></div>
+                            <div class="career-card"><i class="fa-solid fa-sitemap"></i><span>Cyber System Architect</span></div>
+                            <div class="career-card"><i class="fa-solid fa-shield-virus"></i><span>Cyber Security Analyst</span></div>
+                            <div class="career-card"><i class="fa-solid fa-server"></i><span>Cyber System Engineer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-cloud"></i><span>Cloud Engineering</span></div>
+                            <div class="career-card"><i class="fa-solid fa-mobile-screen"></i><span>App & Device Developer</span></div>
+                            <div class="career-card"><i class="fa-solid fa-tasks"></i><span>Project Manager</span></div>
+                            <div class="career-card"><i class="fa-solid fa-database"></i><span>Database Administrator</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="kurikulum">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Kurikulum</span>
+                <h2 class="section-title">Roadmap Perkuliahan</h2>
+                <p class="section-subtitle">
+                    Perjalanan akademik selama 8 semester yang dirancang secara progresif untuk membangun kompetensi secara bertahap.
+                </p>
+            </div>
+            <div class="curriculum-tabs-nav">
+                <button class="curriculum-tab-btn active" data-curprodi="rpl">Software Engineering</button>
+                <button class="curriculum-tab-btn" data-curprodi="informatika">Informatika</button>
+                <button class="curriculum-tab-btn" data-curprodi="si">Sistem Informasi</button>
+            </div>
+
+            <!-- RPL Roadmap -->
+            <div class="curriculum-tab-content active" id="cur-tab-rpl">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 1</span><h4>Programming Basics</h4><p>Algoritma dan pemrograman dasar.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 2</span><h4>Software Foundation</h4><p>Struktur data dan OOP.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 3</span><h4>Development Core</h4><p>Database dan web development.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 4</span><h4>Software Engineering</h4><p>RPL dan manajemen proyek.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 5</span><h4>Advanced Development</h4><p>Mobile dan cloud development.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 6</span><h4>Immersion Program</h4><p>Magang industri 1 semester.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 7</span><h4>Immersion Program</h4><p>Magang industri lanjutan.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 8</span><h4>Capstone Project</h4><p>Pengembangan produk aplikasi siap pakai.</p></div></div>
+                </div>
+            </div>
+
+            <!-- Informatika Roadmap -->
+            <div class="curriculum-tab-content" id="cur-tab-informatika">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 1</span><h4>Computing Basics</h4><p>Algoritma dan matematika diskrit.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 2</span><h4>Programming Foundation</h4><p>Struktur data dan OOP.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 3</span><h4>Computer Science Core</h4><p>Database dan sistem operasi.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 4</span><h4>Software Development</h4><p>Web development dan RPL.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 5</span><h4>Advanced Computing</h4><p>Artificial intelligence.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 6</span><h4>Emerging Technology</h4><p>Cloud computing dan big data.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 7</span><h4>Industry Internship</h4><p>Magang di perusahaan teknologi.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 8</span><h4>Final Project</h4><p>Pengembangan aplikasi.</p></div></div>
+                </div>
+            </div>
+
+            <!-- SI Roadmap -->
+            <div class="curriculum-tab-content" id="cur-tab-si">
+                <div class="roadmap-timeline">
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 1</span><h4>IT Foundation</h4><p>Pengantar sistem informasi dan logika informatika.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 2</span><h4>Business & IT</h4><p>Basis data dan pemrograman dasar.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 3</span><h4>Information Systems Core</h4><p>Analisis sistem dan manajemen proyek TI.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 4</span><h4>Enterprise Systems</h4><p>ERP dan sistem informasi manajemen.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 5</span><h4>Data & Digital Business</h4><p>Business intelligence dan data analytics.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 6</span><h4>Digital Transformation</h4><p>E-business dan IT governance.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 7</span><h4>Industry Internship</h4><p>Magang di perusahaan digital.</p></div></div>
+                    <div class="roadmap-item"><div class="roadmap-dot"></div><div class="roadmap-content"><span class="roadmap-semester">Semester 8</span><h4>Final Project</h4><p>Pengembangan sistem informasi.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeri">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Galeri</span>
+                <h2 class="section-title">Kegiatan & Prestasi</h2>
+                <p class="section-subtitle">
+                    Momen kebanggaan dan aktivitas mahasiswa FST dalam mengukir prestasi di tingkat nasional dan internasional.
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-gallery="1">
+                    <div class="gallery-image-wrapper">
+                        <img src="/images/sisfo/sisfo-1.jpg" alt="Mahasiswa Berprestasi Internasional" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;"><i class="fa-solid fa-medal"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Mahasiswa Berprestasi Internasional</h4>
+                        <p>Mahasiswa S-1 Sistem Informasi meraih 2 medali di ajang kompetisi internasional.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="2">
+                    <div class="gallery-image-wrapper">
+                        <img src="/images/rpl/rpl-1.jpg" alt="VR Kampus UPITRA" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;"><i class="fa-solid fa-vr-cardboard"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>VR Kampus UPITRA</h4>
+                        <p>Mahasiswa Software Engineering menerapkan teknologi VR dengan produk UPITRA VR EXPLORE.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="3">
+                    <div class="gallery-image-wrapper">
+                        <img src="/images/informatika/inf-1.jpg" alt="Kuliah Umum Machine Learning" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;"><i class="fa-solid fa-robot"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Kuliah Umum Machine Learning</h4>
+                        <p>Prodi Informatika mengadakan kuliah umum bidang Machine Learning.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="4">
+                    <div class="gallery-image-wrapper">
+                        <img src="/images/sisfo/sisfo-2.jpg" alt="Medali WYIIA" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;"><i class="fa-solid fa-trophy"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Medali WYIIA</h4>
+                        <p>Mahasiswa Sistem Informasi meraih medali di World Youth Invention And Innovation Award.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="5">
+                    <div class="gallery-image-wrapper">
+                        <img src="/images/rpl/rpl-2.jpg" alt="Project Base di Laboratorium" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;"><i class="fa-solid fa-flask"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Project Base di Laboratorium</h4>
+                        <p>Pengerjaan project oleh mahasiswa Software Engineering di Laboratorium FST.</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-gallery="6">
+                    <div class="gallery-image-wrapper">
+                        <img src="/images/informatika/inf-3.jpg" alt="Suasana Perkuliahan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="gallery-placeholder" style="display:none;"><i class="fa-solid fa-graduation-cap"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>Suasana Perkuliahan</h4>
+                        <p>Kegiatan perkuliahan di program studi Informatika FST UPITRA.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-content">
+                <h2>Siap Menjadi Bagian dari <span>FST UPITRA</span>?</h2>
+                <p>Bergabunglah dengan ribuan mahasiswa yang telah memilih FST sebagai langkah awal menuju karier gemilang di dunia teknologi.</p>
+                <a href="#" class="btn btn-primary">
+                    <span>Daftar Sekarang</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="kontak">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>FST UPITRA</span>
+                    </div>
+                    <p>Fakultas Sains & Teknologi Universitas Pignatelli Triputra mencetak talenta digital yang inovatif, berintegritas, dan berdaya saing global.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Program Studi</h4>
+                    <ul>
+                        <li><a href="#">Software Engineering</a></li>
+                        <li><a href="#">Informatika</a></li>
+                        <li><a href="#">Sistem Informasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#tentang">Tentang FST</a></li>
+                        <li><a href="#program-studi">Program Studi</a></li>
+                        <li><a href="#kurikulum">Kurikulum</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> Kampus UPITRA, Surakarta</li>
+                        <li><i class="fa-solid fa-phone"></i> +62 271 123456</li>
+                        <li><i class="fa-solid fa-envelope"></i> fst@upitra.ac.id</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fakultas Sains & Teknologi - Universitas Pignatelli Triputra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
